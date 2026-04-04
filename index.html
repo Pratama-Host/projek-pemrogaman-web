@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive UI Showcase</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar Menu -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>🎨 UI Components</h2>
+        </div>
+        <ul class="menu-list">
+            <li><a href="#buttons" data-section="buttons">6 Style Buttons</a></li>
+            <li><a href="#theme" data-section="theme">Theme Toggle</a></li>
+            <li><a href="#accordion" data-section="accordion">Accordion</a></li>
+            <li><a href="#modal" data-section="modal">Modal Dialog</a></li>
+            <li><a href="#tabs" data-section="tabs">Tabs Navigation</a></li>
+            <li><a href="#slider" data-section="slider">Slider Range</a></li>
+            <li><a href="#progress" data-section="progress">Progress Bar</a></li>
+            <li><a href="#cards" data-section="cards">Card Effects</a></li>
+            <li><a href="#dropdown" data-section="dropdown">Dropdown Menu</a></li>
+            <li><a href="#toast" data-section="toast">Toast Notification</a></li>
+            <li><a href="#spinner" data-section="spinner">Loading Spinners</a></li>
+            <li><a href="#inputs" data-section="inputs">Custom Inputs</a></li>
+            <li><a href="#tooltip" data-section="tooltip">Tooltips</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="hero">
+            <h1>✨ Interactive UI Showcase</h1>
+            <p>Eksplorasi berbagai komponen interaktif yang colorful & playful!</p>
+        </header>
+
+        <!-- Section: 6 Style Buttons -->
+        <section id="buttons" class="section active">
+            <h2>🎯 6 Style Buttons</h2>
+            <div class="button-showcase">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-gradient">Gradient Button</button>
+                <button class="btn btn-outline">Outline Button</button>
+                <button class="btn btn-3d">3D Button</button>
+                <button class="btn btn-glow">Glow Button</button>
+                <button class="btn btn-animated">Animated Button</button>
+            </div>
+        </section>
+
+        <!-- Section: Theme Toggle -->
+        <section id="theme" class="section">
+            <h2>🌓 Theme Toggle</h2>
+            <div class="theme-container">
+                <span class="theme-label">Light</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="theme-label">Dark</span>
+            </div>
+        </section>
+
+        <!-- Section: Accordion -->
+        <section id="accordion" class="section">
+            <h2>📋 Accordion Panel</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Apa itu HTML?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>HTML (HyperText Markup Language) adalah bahasa markup standar untuk membuat halaman web.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Apa itu CSS?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>CSS (Cascading Style Sheets) digunakan untuk styling dan layout halaman web.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Apa itu JavaScript?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>JavaScript adalah bahasa pemrograman yang membuat halaman web menjadi interaktif.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Modal -->
+        <section id="modal" class="section">
+            <h2>🪟 Modal Dialog</h2>
+            <button class="btn btn-primary" id="openModal">Buka Modal</button>
+            
+            <div class="modal" id="modal">
+                <div class="modal-content">
+                    <span class="modal-close">&times;</span>
+                    <h3>🎉 Selamat Datang!</h3>
+                    <p>Ini adalah contoh modal dialog yang interaktif. Klik tombol X atau area luar untuk menutup.</p>
+                    <button class="btn btn-gradient">Oke, Mengerti!</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Tabs -->
+        <section id="tabs" class="section">
+            <h2>📑 Tabs Navigation</h2>
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="tab1">🏠 Home</button>
+                    <button class="tab-btn" data-tab="tab2">👤 Profile</button>
+                    <button class="tab-btn" data-tab="tab3">⚙️ Settings</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <h3>Home Content</h3>
+                        <p>Selamat datang di halaman Home! Ini adalah konten tab pertama.</p>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <h3>Profile Content</h3>
+                        <p>Informasi profil Anda akan ditampilkan di sini.</p>
+                    </div>
+                    <div class="tab-pane" id="tab3">
+                        <h3>Settings Content</h3>
+                        <p>Pengaturan aplikasi tersedia di tab ini.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Slider -->
+        <section id="slider" class="section">
+            <h2>🎚️ Slider Range</h2>
+            <div class="slider-container">
+                <label>Volume: <span id="sliderValue">50</span>%</label>
+                <input type="range" class="slider" id="rangeSlider" min="0" max="100" value="50">
+            </div>
+        </section>
+
+        <!-- Section: Progress Bar -->
+        <section id="progress" class="section">
+            <h2>📊 Progress Bar</h2>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <button class="btn btn-primary" id="startProgress">Start Progress</button>
+            </div>
+        </section>
+
+        <!-- Section: Cards -->
+        <section id="cards" class="section">
+            <h2>🃏 Card Effects</h2>
+            <div class="card-grid">
+                <div class="card card-hover">
+                    <div class="card-icon">🚀</div>
+                    <h3>Hover Me</h3>
+                    <p>Arahkan kursor untuk efek hover</p>
+                </div>
+                <div class="card card-flip">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">🎨</div>
+                            <h3>Flip Card</h3>
+                            <p>Klik untuk flip</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Balik!</h3>
+                            <p>Klik lagi untuk kembali</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-glow">
+                    <div class="card-icon">✨</div>
+                    <h3>Glow Effect</h3>
+                    <p>Card dengan efek cahaya</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Dropdown -->
+        <section id="dropdown" class="section">
+            <h2>📥 Dropdown Menu</h2>
+            <div class="dropdown">
+                <button class="btn btn-outline dropdown-toggle">
+                    Pilih Opsi ▼
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item" data-option="dashboard">🏠 Dashboard</a>
+                    <a href="#" class="dropdown-item" data-option="profile">👤 Profile</a>
+                    <a href="#" class="dropdown-item" data-option="settings">⚙️ Settings</a>
+                    <a href="#" class="dropdown-item" data-option="logout">🚪 Logout</a>
+                </div>
+            </div>
+            
+            <!-- Image Gallery Container -->
+            <div class="image-gallery" id="imageGallery">
+                <h3 id="galleryTitle">Pilih opsi untuk melihat galeri</h3>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Images will be inserted here dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Toast -->
+        <section id="toast" class="section">
+            <h2>🍞 Toast Notification</h2>
+            <div class="toast-buttons">
+                <button class="btn btn-primary" onclick="showToast('success')">Success Toast</button>
+                <button class="btn btn-gradient" onclick="showToast('info')">Info Toast</button>
+                <button class="btn btn-outline" onclick="showToast('warning')">Warning Toast</button>
+                <button class="btn btn-3d" onclick="showToast('error')">Error Toast</button>
+            </div>
+        </section>
+
+        <!-- Section: Spinners -->
+        <section id="spinner" class="section">
+            <h2>⏳ Loading Spinners</h2>
+            <div class="spinner-showcase">
+                <div class="spinner spinner-1"></div>
+                <div class="spinner spinner-2"></div>
+                <div class="spinner spinner-3"></div>
+                <div class="spinner spinner-4"></div>
+            </div>
+        </section>
+
+        <!-- Section: Custom Inputs -->
+        <section id="inputs" class="section">
+            <h2>✅ Custom Inputs</h2>
+            <div class="input-showcase">
+                <div class="input-group">
+                    <h3>Checkboxes</h3>
+                    <label class="custom-checkbox">Option 1
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="custom-checkbox">Option 2
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="custom-checkbox">Option 3
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="input-group">
+                    <h3>Radio Buttons</h3>
+                    <label class="custom-radio">Choice A
+                        <input type="radio" name="radio" checked>
+                        <span class="radiomark"></span>
+                    </label>
+                    <label class="custom-radio">Choice B
+                        <input type="radio" name="radio">
+                        <span class="radiomark"></span>
+                    </label>
+                    <label class="custom-radio">Choice C
+                        <input type="radio" name="radio">
+                        <span class="radiomark"></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Tooltips -->
+        <section id="tooltip" class="section">
+            <h2>💬 Tooltips</h2>
+            <div class="tooltip-showcase">
+                <button class="btn btn-primary tooltip-trigger" data-tooltip="Ini adalah tooltip!">Hover Me</button>
+                <button class="btn btn-gradient tooltip-trigger" data-tooltip="Tooltip dengan info">Info Tooltip</button>
+                <button class="btn btn-outline tooltip-trigger" data-tooltip="Tooltip membantu user">Help Tooltip</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Zoom Modal for Logout Gallery -->
+    <div class="zoom-modal" id="zoomModal">
+        <span class="zoom-close">&times;</span>
+        <img class="zoom-content" id="zoomImage">
+        <div class="zoom-caption" id="zoomCaption"></div>
+    </div>
+
+    <script>
+        // Hamburger & Sidebar Toggle
+        const hamburger = document.getElementById('hamburgerBtn');
+        const sidebar = document.getElementById('sidebar');
+
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+                sidebar.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Section Navigation
+        const menuLinks = document.querySelectorAll('.menu-list a');
+        const sections = document.querySelectorAll('.section');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = link.getAttribute('data-section');
+                
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                document.getElementById(targetSection).classList.add('active');
+                
+                // Close sidebar on mobile
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-theme');
+        });
+
+        // Accordion
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Modal
+        const modal = document.getElementById('modal');
+        const openModalBtn = document.getElementById('openModal');
+        const closeModal = document.querySelector('.modal-close');
+
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Tabs
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+                
+                tabButtons.forEach(b => b.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Slider
+        const rangeSlider = document.getElementById('rangeSlider');
+        const sliderValue = document.getElementById('sliderValue');
+
+        rangeSlider.addEventListener('input', () => {
+            sliderValue.textContent = rangeSlider.value;
+        });
+
+        // Progress Bar
+        const startProgressBtn = document.getElementById('startProgress');
+        const progressFill = document.getElementById('progressFill');
+
+        startProgressBtn.addEventListener('click', () => {
+            let progress = 0;
+            progressFill.style.width = '0%';
+            
+            const interval = setInterval(() => {
+                progress += 1;
+                progressFill.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                }
+            }, 20);
+        });
+
+        // Card Flip
+        const flipCards = document.querySelectorAll('.card-flip');
+        flipCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+
+        // ========== DROPDOWN WITH 4 DIFFERENT STYLES ========== //
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+        const imageGallery = document.getElementById('imageGallery');
+        const galleryGrid = document.getElementById('galleryGrid');
+        const galleryTitle = document.getElementById('galleryTitle');
+
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            dropdownMenu.classList.remove('active');
+        });
+
+        // Handle dropdown item click with DIFFERENT STYLES for each option
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const option = item.getAttribute('data-option');
+                const optionText = item.textContent.trim();
+                
+                // Update title
+                galleryTitle.textContent = `Galeri ${optionText}`;
+                
+                // Clear existing images
+                galleryGrid.innerHTML = '';
+                
+                const imageUrl = 'https://files.catbox.moe/i6m07z.png';
+                
+                // STYLE 1: Dashboard - Hover Overlay (default style)
+                if (option === 'dashboard') {
+                    galleryGrid.className = 'gallery-grid style-dashboard';
+                    for (let i = 1; i <= 4; i++) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'gallery-item';
+                        imgContainer.innerHTML = `
+                            <img src="${imageUrl}" alt="${optionText} ${i}">
+                            <div class="gallery-overlay">
+                                <span class="gallery-label">${optionText} #${i}</span>
+                            </div>
+                        `;
+                        galleryGrid.appendChild(imgContainer);
+                    }
+                }
+                
+                // STYLE 2: Profile - Button View Details
+                else if (option === 'profile') {
+                    galleryGrid.className = 'gallery-grid style-profile';
+                    for (let i = 1; i <= 4; i++) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'gallery-item-profile';
+                        imgContainer.innerHTML = `
+                            <img src="${imageUrl}" alt="${optionText} ${i}">
+                            <div class="profile-info">
+                                <h4>${optionText} #${i}</h4>
+                                <button class="btn-view-details" onclick="alert('Detail ${optionText} #${i}')">
+                                    View Details →
+                                </button>
+                            </div>
+                        `;
+                        galleryGrid.appendChild(imgContainer);
+                    }
+                }
+                
+                // STYLE 3: Settings - Flip Card
+                else if (option === 'settings') {
+                    galleryGrid.className = 'gallery-grid style-settings';
+                    for (let i = 1; i <= 4; i++) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'gallery-item-flip';
+                        imgContainer.innerHTML = `
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <img src="${imageUrl}" alt="${optionText} ${i}">
+                                </div>
+                                <div class="flip-back">
+                                    <h3>⚙️</h3>
+                                    <p>${optionText} #${i}</p>
+                                    <p>Klik untuk kembali</p>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Add click event for flip
+                        imgContainer.addEventListener('click', () => {
+                            imgContainer.classList.toggle('flipped');
+                        });
+                        
+                        galleryGrid.appendChild(imgContainer);
+                    }
+                }
+                
+                // STYLE 4: Logout - Zoom Modal
+                else if (option === 'logout') {
+                    galleryGrid.className = 'gallery-grid style-logout';
+                    for (let i = 1; i <= 4; i++) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'gallery-item-zoom';
+                        imgContainer.innerHTML = `
+                            <img src="${imageUrl}" alt="${optionText} ${i}" class="zoom-trigger">
+                            <div class="zoom-icon">🔍</div>
+                            <div class="zoom-label">${optionText} #${i}</div>
+                        `;
+                        
+                        // Add zoom modal functionality
+                        const img = imgContainer.querySelector('img');
+                        img.addEventListener('click', () => {
+                            openZoomModal(imageUrl, `${optionText} #${i}`);
+                        });
+                        
+                        galleryGrid.appendChild(imgContainer);
+                    }
+                }
+                
+                // Show gallery with animation
+                imageGallery.classList.add('active');
+                
+                // Close dropdown
+                dropdownMenu.classList.remove('active');
+            });
+        });
+
+        // Zoom Modal Functions (for Logout style)
+        const zoomModal = document.getElementById('zoomModal');
+        const zoomImage = document.getElementById('zoomImage');
+        const zoomCaption = document.getElementById('zoomCaption');
+        const zoomClose = document.querySelector('.zoom-close');
+
+        function openZoomModal(imgSrc, caption) {
+            zoomModal.style.display = 'flex';
+            zoomImage.src = imgSrc;
+            zoomCaption.textContent = caption;
+            setTimeout(() => {
+                zoomModal.classList.add('active');
+            }, 10);
+        }
+
+        zoomClose.addEventListener('click', () => {
+            zoomModal.classList.remove('active');
+            setTimeout(() => {
+                zoomModal.style.display = 'none';
+            }, 300);
+        });
+
+        zoomModal.addEventListener('click', (e) => {
+            if (e.target === zoomModal) {
+                zoomModal.classList.remove('active');
+                setTimeout(() => {
+                    zoomModal.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        // Toast Notification
+        function showToast(type) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            
+            const messages = {
+                success: '✅ Berhasil! Operasi selesai.',
+                info: 'ℹ️ Info: Ada informasi untuk Anda.',
+                warning: '⚠️ Peringatan: Perhatikan ini.',
+                error: '❌ Error: Terjadi kesalahan.'
+            };
+            
+            toast.textContent = messages[type];
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
