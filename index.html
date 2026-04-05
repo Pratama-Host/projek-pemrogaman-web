@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive UI Showcase</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== SECTION TITLE (Judul Tengah) ===== */
+        .section-title-banner {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 22px 20px 18px;
+            background: linear-gradient(135deg, var(--color-5), var(--color-3));
+            border-radius: 12px;
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+        .section-title-banner h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin: 0 0 4px 0;
+        }
+        .section-title-banner p {
+            font-size: 0.95rem;
+            opacity: 0.88;
+            margin: 0;
+        }
+
+        /* ===== DOC BLOCKS ===== */
+        .doc-intro {
+            background: linear-gradient(135deg, rgba(69,183,209,0.08), rgba(162,155,254,0.08));
+            border-left: 4px solid var(--color-3);
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 28px 0 18px;
+        }
+        .doc-intro h3 {
+            color: var(--color-3);
+            margin: 0 0 8px;
+            font-size: 1.1rem;
+        }
+        .doc-intro p { margin: 0 0 6px; line-height: 1.7; }
+        .doc-intro p:last-child { margin: 0; }
+
+        .doc-code-block {
+            background: #1a202c;
+            border-left: 3px solid var(--color-7);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 14px 0;
+            overflow-x: auto;
+        }
+        .doc-code-block code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.88rem;
+            color: #e2e8f0;
+            line-height: 1.6;
+            white-space: pre;
+        }
+        .doc-code-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--color-7);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .doc-conclusion {
+            background: linear-gradient(135deg, rgba(0,184,148,0.07), rgba(78,205,196,0.07));
+            border-left: 4px solid var(--color-7);
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 18px 0 0;
+        }
+        .doc-conclusion h3 {
+            color: var(--color-7);
+            margin: 0 0 8px;
+            font-size: 1.05rem;
+        }
+        .doc-conclusion ul {
+            margin: 8px 0 0 18px;
+            padding: 0;
+        }
+        .doc-conclusion ul li {
+            margin-bottom: 5px;
+            line-height: 1.6;
+        }
+        .doc-conclusion p { margin: 0; line-height: 1.7; }
+
+        .doc-separator {
+            border: none;
+            border-top: 2px dashed var(--color-2);
+            opacity: 0.3;
+            margin: 28px 0;
+        }
+
+        .doc-step {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 10px 0;
+            border-left: 3px solid var(--color-5);
+        }
+        .doc-step h4 {
+            color: var(--color-5);
+            font-size: 1rem;
+            margin: 0 0 6px;
+        }
+        .doc-step p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+        .doc-step code {
+            background: rgba(162,155,254,0.15);
+            color: var(--color-5);
+            padding: 1px 5px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88em;
+        }
+
+        .doc-highlight {
+            display: inline-block;
+            background: rgba(162,155,254,0.13);
+            color: var(--color-5);
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.88em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hamburger Menu Button -->
+    <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar Menu -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>🎨 UI Components</h2>
+        </div>
+        <ul class="menu-list">
+            <li><a href="#buttons" data-section="buttons">6 Style Buttons</a></li>
+            <li><a href="#theme" data-section="theme">Theme Toggle</a></li>
+            <li><a href="#accordion" data-section="accordion">Accordion</a></li>
+            <li><a href="#modal" data-section="modal">Modal Dialog</a></li>
+            <li><a href="#tabs" data-section="tabs">Tabs Navigation</a></li>
+            <li><a href="#slider" data-section="slider">Slider Range</a></li>
+            <li><a href="#progress" data-section="progress">Progress Bar</a></li>
+            <li><a href="#cards" data-section="cards">Card Effects</a></li>
+            <li><a href="#dropdown" data-section="dropdown">Dropdown Menu</a></li>
+            <li><a href="#toast" data-section="toast">Toast Notification</a></li>
+            <li><a href="#spinner" data-section="spinner">Loading Spinners</a></li>
+            <li><a href="#inputs" data-section="inputs">Custom Inputs</a></li>
+            <li><a href="#tooltip" data-section="tooltip">Tooltips</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="hero">
+            <h1>✨ Interactive UI Showcase</h1>
+            <p>Eksplorasi berbagai komponen interaktif yang colorful & playful!</p>
+        </header>
+
+        <!-- Section: 6 Style Buttons -->
+        <section id="buttons" class="section active">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>🎯 6 Style Buttons</h1>
+                <p>Eksplorasi enam gaya tombol interaktif dengan efek CSS yang berbeda-beda</p>
+            </div>
+
+            <h2>🎯 6 Style Buttons</h2>
+            <div class="button-showcase">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-gradient">Gradient Button</button>
+                <button class="btn btn-outline">Outline Button</button>
+                <button class="btn btn-3d">3D Button</button>
+                <button class="btn btn-glow">Glow Button</button>
+                <button class="btn btn-animated">Animated Button</button>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Apa itu Style Buttons?</h3>
+                <p>Button adalah elemen paling sering diklik di website. Di sini ada <strong>6 jenis button</strong> dengan karakteristik visual dan animasi yang berbeda, masing-masing punya "kepribadian" sesuai fungsinya.</p>
+                <p>Setiap button dibuat murni dengan <strong>CSS3</strong> — tanpa gambar, tanpa library. Ini membuktikan bahwa CSS saja sudah bisa menghasilkan efek yang luar biasa.</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>1️⃣ Primary Button — Gradient + Hover Lift</h4>
+                <p>Tombol utama halaman. Gradient merah-pink dengan efek "naik" saat di-hover menggunakan <code>transform: translateY(-2px)</code>. Shadow makin tebal saat hover untuk memperkuat kesan terangkat.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Primary Button</span>
+                <code>.btn-primary {
+    background: linear-gradient(135deg, #ff6b6b, #fd79a8);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+.btn-primary:hover {
+    transform: translateY(-2px); /* Naik 2px saat hover */
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>2️⃣ Gradient Button — Scale Hover</h4>
+                <p>Gradient biru-ungu. Saat di-hover tombol membesar 5% menggunakan <code>transform: scale(1.05)</code>, memberi kesan tombol "maju" ke layar.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Gradient Button</span>
+                <code>.btn-gradient {
+    background: linear-gradient(135deg, #45b7d1, #a29bfe);
+    color: white;
+}
+.btn-gradient:hover {
+    transform: scale(1.05); /* Membesar 5% */
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>3️⃣ Outline Button — Fill on Hover</h4>
+                <p>Awalnya transparan, hanya border. Saat di-hover, background terisi warna penuh. Teknik ini cocok untuk tombol alternatif seperti "Cancel" atau "Batal".</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Outline Button</span>
+                <code>.btn-outline {
+    background: transparent;
+    border: 3px solid #4ecdc4;
+    color: #4ecdc4;
+}
+.btn-outline:hover {
+    background: #4ecdc4; /* Background terisi saat hover */
+    color: white;
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>4️⃣ 3D Button — Press Effect</h4>
+                <p>Terlihat seperti tombol fisik. Shadow bawah menyimulasikan kedalaman. Saat diklik (<code>:active</code>), tombol "turun" dan shadow mengecil — persis seperti menekan tombol sungguhan.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — 3D Button</span>
+                <code>.btn-3d {
+    background: #f9ca24;
+    box-shadow: 0 6px 0 #d4a017; /* Shadow = kedalaman */
+}
+.btn-3d:active {
+    transform: translateY(4px); /* Turun saat ditekan */
+    box-shadow: 0 2px 0 #d4a017; /* Shadow mengecil */
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>5️⃣ Glow Button — Pulse Animation</h4>
+                <p>Efek "cahaya berdenyut" yang jalan otomatis menggunakan <code>@keyframes</code>. Box-shadow berubah dari kecil ke besar berulang, menciptakan efek neon yang menarik perhatian.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Glow Button</span>
+                <code>.btn-glow {
+    background: #a29bfe;
+    animation: glow 2s infinite; /* Loop tanpa henti */
+}
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(162, 155, 254, 0.5); }
+    50%       { box-shadow: 0 0 40px rgba(162, 155, 254, 0.8); }
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>6️⃣ Animated Button — Moving Gradient</h4>
+                <p>Background gradientnya dibuat 2x lebih lebar dari tombol, lalu posisinya digeser terus-menerus menggunakan <code>background-position</code>. Hasilnya adalah gradient yang seperti "bergerak" dari kiri ke kanan.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Animated Button</span>
+                <code>.btn-animated {
+    background: linear-gradient(90deg, #00b894, #4ecdc4, #00b894);
+    background-size: 200% 100%; /* 2x lebih lebar */
+    animation: gradient-shift 3s ease infinite;
+}
+@keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50%       { background-position: 100% 50%; } /* Geser ke kanan */
+}</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li><strong>Primary</strong> → Aksi terpenting (submit, beli, daftar)</li>
+                    <li><strong>Gradient</strong> → Fitur sekunder yang ingin ditonjolkan</li>
+                    <li><strong>Outline</strong> → Aksi alternatif/cancel yang tidak terlalu mencolok</li>
+                    <li><strong>3D</strong> → Nuansa retro dan fun, cocok untuk game UI</li>
+                    <li><strong>Glow</strong> → Menarik perhatian ke fitur premium atau notifikasi</li>
+                    <li><strong>Animated</strong> → CTA (Call-to-Action) yang ingin sangat menonjol</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Theme Toggle -->
+        <section id="theme" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>🌓 Theme Toggle</h1>
+                <p>Beralih antara Light Mode dan Dark Mode dengan satu klik</p>
+            </div>
+
+            <h2>🌓 Theme Toggle</h2>
+            <div class="theme-container">
+                <span class="theme-label">Light</span>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="themeToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="theme-label">Dark</span>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Apa itu Theme Toggle?</h3>
+                <p>Theme Toggle atau Dark Mode Switch adalah fitur yang memungkinkan pengguna memilih tampilan <strong>terang (light)</strong> atau <strong>gelap (dark)</strong> sesuai preferensi. Fitur ini kini menjadi standar di hampir semua aplikasi modern — Instagram, YouTube, Twitter, semuanya punya!</p>
+                <p>Komponen ini terdiri dari <strong>toggle switch CSS</strong> yang elegan dan <strong>CSS Variables</strong> yang secara instan mengubah seluruh palet warna halaman.</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>🎨 Cara Kerja: CSS Variables</h4>
+                <p>Seluruh warna halaman disimpan dalam variabel CSS di <code>:root</code>. Saat class <code>dark-theme</code> ditambahkan ke <code>&lt;body&gt;</code>, variabel-variabel itu di-override oleh nilai dark mode — dan semua elemen yang menggunakan variabel itu ikut berubah secara otomatis!</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Dual Theme Variables</span>
+                <code>/* Light Mode (default) */
+:root {
+    --bg-primary: #f0f4ff;
+    --bg-secondary: #ffffff;
+    --text-primary: #2d3748;
+}
+
+/* Dark Mode (aktif saat body punya class dark-theme) */
+body.dark-theme {
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --text-primary: #f7fafc;
+}
+
+/* Elemen tinggal pakai variabelnya */
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background 0.3s, color 0.3s; /* Animasi smooth */
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>🔘 Toggle Switch — Murni CSS</h4>
+                <p>Switch berbentuk pil oval ini dibuat sepenuhnya dengan CSS. Elemen <code>&lt;input type="checkbox"&gt;</code> disembunyikan, lalu <code>.toggle-slider</code> menggantikan tampilannya. Lingkaran putih di dalamnya bergerak menggunakan <code>transform: translateX()</code>.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Toggle Switch</span>
+                <code>.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    display: inline-block;
+}
+.toggle-switch input { opacity: 0; } /* Sembunyikan checkbox asli */
+
+.toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f9ca24, #ff8c00);
+    border-radius: 30px;
+    cursor: pointer;
+}
+.toggle-slider:before {
+    content: "";
+    position: absolute;
+    width: 22px; height: 22px;
+    left: 4px; bottom: 4px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+input:checked + .toggle-slider:before {
+    transform: translateX(30px); /* Geser ke kanan */
+}</code>
+            </div>
+
+            <div class="doc-code-block">
+                <span class="doc-code-label">JavaScript — Toggle Theme</span>
+                <code>const themeToggle = document.getElementById('themeToggle');
+
+themeToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-theme');
+    // Saat checkbox dicentang → class 'dark-theme' ditambahkan
+    // Saat checkbox tidak dicentang → class 'dark-theme' dihapus
+});</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Gunakan <strong>CSS Variables</strong> agar tema bisa berubah hanya dengan satu class</li>
+                    <li>Tambahkan <strong>transition</strong> pada <code>body</code> agar pergantian tema terasa mulus</li>
+                    <li>Toggle switch bisa dibuat sepenuhnya dengan CSS tanpa gambar apapun</li>
+                    <li>Dark mode bukan sekadar estetika — juga <strong>hemat baterai</strong> dan lebih nyaman di mata</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Accordion -->
+        <section id="accordion" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>📋 Accordion Panel</h1>
+                <p>Konten yang bisa dibuka dan ditutup dengan animasi smooth</p>
+            </div>
+
+            <h2>📋 Accordion Panel</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Apa itu HTML?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>HTML (HyperText Markup Language) adalah bahasa markup standar untuk membuat halaman web.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Apa itu CSS?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>CSS (Cascading Style Sheets) digunakan untuk styling dan layout halaman web.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Apa itu JavaScript?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>JavaScript adalah bahasa pemrograman yang membuat halaman web menjadi interaktif.</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Apa itu Accordion?</h3>
+                <p>Accordion adalah komponen UI yang menyembunyikan konten di balik header. Saat header diklik, konten "membuka" ke bawah — seperti alat musik akordeon yang bisa dilipat dan dibuka.</p>
+                <p>Accordion sangat berguna untuk <strong>FAQ, Terms & Conditions, panel settings</strong>, atau konten apapun yang panjang namun perlu disajikan secara ringkas.</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>🏗️ Struktur HTML</h4>
+                <p>Setiap item accordion terdiri dari <code>.accordion-header</code> (yang diklik) dan <code>.accordion-content</code> (yang tersembunyi). Icon <code>+</code> akan berputar 45° menjadi <code>×</code> saat terbuka.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">HTML — Accordion Structure</span>
+                <code>&lt;div class="accordion-item"&gt;
+    &lt;button class="accordion-header"&gt;
+        &lt;span&gt;Pertanyaan di sini?&lt;/span&gt;
+        &lt;span class="accordion-icon"&gt;+&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="accordion-content"&gt;
+        &lt;p&gt;Jawaban atau konten tersembunyi di sini.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>🎞️ Trik Animasi: max-height</h4>
+                <p>Animasi "slide down" tidak bisa menggunakan <code>height: auto</code> karena CSS tidak bisa mentransisikan nilai <code>auto</code>. Solusinya: gunakan <code>max-height</code> dengan nilai yang cukup besar saat aktif, dan <code>0</code> saat tertutup.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Accordion Animation Trick</span>
+                <code>/* Awalnya tertutup */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+/* Saat item aktif (dibuka) */
+.accordion-item.active .accordion-content {
+    max-height: 500px; /* Nilai lebih besar dari konten */
+    padding: 15px 20px;
+}
+
+/* Icon + berputar menjadi × */
+.accordion-icon {
+    transition: transform 0.3s;
+}
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}</code>
+            </div>
+
+            <div class="doc-code-block">
+                <span class="doc-code-label">JavaScript — Toggle Accordion (One at a Time)</span>
+                <code>const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+        const item = header.parentElement;
+        const isActive = item.classList.contains('active');
+
+        // Tutup semua accordion dulu
+        document.querySelectorAll('.accordion-item').forEach(i => {
+            i.classList.remove('active');
+        });
+
+        // Buka yang diklik (kecuali kalau sudah aktif = tutup)
+        if (!isActive) {
+            item.classList.add('active');
+        }
+    });
+});</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Gunakan <strong>max-height</strong> bukan height untuk animasi slide yang smooth</li>
+                    <li>Logika "tutup semua, baru buka yang diklik" memastikan hanya satu item yang terbuka</li>
+                    <li>Rotasi icon <code>+</code> → <code>×</code> memberikan feedback visual yang jelas</li>
+                    <li>Accordion ideal untuk <strong>FAQ, spesifikasi produk</strong>, dan konten panjang yang perlu diringkas</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Modal -->
+        <section id="modal" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>🪟 Modal Dialog</h1>
+                <p>Jendela popup yang muncul di atas konten utama untuk interaksi fokus</p>
+            </div>
+
+            <h2>🪟 Modal Dialog</h2>
+            <button class="btn btn-primary" id="openModal">Buka Modal</button>
+            
+            <div class="modal" id="modal">
+                <div class="modal-content">
+                    <span class="modal-close">&times;</span>
+                    <h3>🎉 Selamat Datang!</h3>
+                    <p>Ini adalah contoh modal dialog yang interaktif. Klik tombol X atau area luar untuk menutup.</p>
+                    <button class="btn btn-gradient">Oke, Mengerti!</button>
+                </div>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Apa itu Modal Dialog?</h3>
+                <p>Modal adalah jendela "pop-up" yang muncul di atas konten halaman, memblokir interaksi dengan konten di belakangnya sampai modal ditutup. Modal digunakan untuk konfirmasi, pesan penting, form input, atau preview gambar.</p>
+                <p>Komponen ini terdiri dari <strong>backdrop gelap</strong> (overlay) dan <strong>kotak konten</strong> di tengahnya, lengkap dengan animasi muncul yang smooth.</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>🏗️ Struktur HTML</h4>
+                <p>Modal memiliki dua lapisan: <code>.modal</code> sebagai backdrop fullscreen, dan <code>.modal-content</code> sebagai kotak dialog yang sesungguhnya. Tombol <code>.modal-close</code> (×) untuk menutupnya.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">HTML — Modal Structure</span>
+                <code>&lt;!-- Tombol untuk membuka modal --&gt;
+&lt;button id="openModal"&gt;Buka Modal&lt;/button&gt;
+
+&lt;!-- Modal: backdrop + content box --&gt;
+&lt;div class="modal" id="modal"&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;span class="modal-close"&gt;&amp;times;&lt;/span&gt;
+        &lt;h3&gt;Judul Modal&lt;/h3&gt;
+        &lt;p&gt;Isi konten modal di sini.&lt;/p&gt;
+        &lt;button&gt;Tutup&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>🎞️ Animasi Modal dengan CSS</h4>
+                <p>Modal awalnya <code>display: none</code> dan <code>opacity: 0</code>. Saat class <code>active</code> ditambahkan, modal muncul dengan fade-in dan kotak kontennya turun dari atas menggunakan <code>transform: translateY()</code>.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Modal Backdrop & Animation</span>
+                <code>/* Backdrop fullscreen */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0; /* top:0 right:0 bottom:0 left:0 */
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+.modal.active {
+    display: flex; /* Muncul saat active */
+    animation: modalFadeIn 0.3s ease;
+}
+
+/* Kotak dialog */
+.modal-content {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    animation: modalSlideIn 0.3s ease;
+}
+@keyframes modalSlideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to   { transform: translateY(0); opacity: 1; }
+}</code>
+            </div>
+
+            <div class="doc-code-block">
+                <span class="doc-code-label">JavaScript — Open & Close Modal</span>
+                <code>const modal = document.getElementById('modal');
+const openModalBtn = document.getElementById('openModal');
+const closeModal = document.querySelector('.modal-close');
+
+// Buka modal
+openModalBtn.addEventListener('click', () => {
+    modal.classList.add('active');
+});
+
+// Tutup via tombol ×
+closeModal.addEventListener('click', () => {
+    modal.classList.remove('active');
+});
+
+// Tutup saat klik backdrop (luar kotak)
+window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('active');
+    }
+});</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Modal terdiri dari dua lapis: <strong>backdrop gelap</strong> dan <strong>kotak konten</strong></li>
+                    <li>Klik di luar kotak (pada backdrop) harus menutup modal — ini UX yang baik</li>
+                    <li>Animasi <strong>slide down + fade in</strong> membuat modal terasa lebih halus dan profesional</li>
+                    <li>Gunakan modal untuk: konfirmasi hapus, preview gambar, form login/register, atau pesan penting</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Tabs -->
+        <section id="tabs" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>📑 Tabs Navigation</h1>
+                <p>Navigasi konten berlapis dengan tampilan satu panel aktif dalam satu waktu</p>
+            </div>
+
+            <h2>📑 Tabs Navigation</h2>
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="tab1">🏠 Home</button>
+                    <button class="tab-btn" data-tab="tab2">👤 Profile</button>
+                    <button class="tab-btn" data-tab="tab3">⚙️ Settings</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <h3>Home Content</h3>
+                        <p>Selamat datang di halaman Home! Ini adalah konten tab pertama.</p>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <h3>Profile Content</h3>
+                        <p>Informasi profil Anda akan ditampilkan di sini.</p>
+                    </div>
+                    <div class="tab-pane" id="tab3">
+                        <h3>Settings Content</h3>
+                        <p>Pengaturan aplikasi tersedia di tab ini.</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Apa itu Tabs Navigation?</h3>
+                <p>Tabs memungkinkan pengelompokan konten berbeda dalam satu area tampilan. Hanya satu panel (tab pane) yang terlihat dalam satu waktu, dan user bisa beralih antar konten dengan mengklik tombol tab.</p>
+                <p>Pola ini sangat umum di halaman profil, dashboard aplikasi, dan pengaturan — karena menghemat ruang tanpa mengorbankan aksesibilitas konten.</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>🏗️ Struktur HTML</h4>
+                <p>Ada dua bagian utama: <code>.tab-buttons</code> berisi tombol-tombol tab, dan <code>.tab-content</code> berisi panel konten (<code>.tab-pane</code>) yang hanya satu bisa aktif sekaligus. Koneksi antara tombol dan panel menggunakan atribut <code>data-tab</code>.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">HTML — Tabs Structure</span>
+                <code>&lt;div class="tabs"&gt;
+    &lt;!-- Tombol tab --&gt;
+    &lt;div class="tab-buttons"&gt;
+        &lt;button class="tab-btn active" data-tab="tab1"&gt;🏠 Home&lt;/button&gt;
+        &lt;button class="tab-btn" data-tab="tab2"&gt;👤 Profile&lt;/button&gt;
+        &lt;button class="tab-btn" data-tab="tab3"&gt;⚙️ Settings&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;!-- Panel konten --&gt;
+    &lt;div class="tab-content"&gt;
+        &lt;div class="tab-pane active" id="tab1"&gt;Konten Home&lt;/div&gt;
+        &lt;div class="tab-pane" id="tab2"&gt;Konten Profile&lt;/div&gt;
+        &lt;div class="tab-pane" id="tab3"&gt;Konten Settings&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>🎨 CSS: Tampilkan Hanya Panel Aktif</h4>
+                <p>Semua <code>.tab-pane</code> disembunyikan dengan <code>display: none</code> secara default. Hanya yang memiliki class <code>active</code> yang akan ditampilkan. Tombol aktif mendapat style khusus sebagai indikator visual.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Show/Hide Tab Panes</span>
+                <code>/* Sembunyikan semua panel */
+.tab-pane {
+    display: none;
+    padding: 20px;
+}
+
+/* Tampilkan hanya yang aktif */
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Tombol tab aktif */
+.tab-btn.active {
+    background: linear-gradient(135deg, var(--color-3), var(--color-5));
+    color: white;
+}</code>
+            </div>
+
+            <div class="doc-code-block">
+                <span class="doc-code-label">JavaScript — Tab Switching Logic</span>
+                <code>const tabButtons = document.querySelectorAll('.tab-btn');
+const tabPanes = document.querySelectorAll('.tab-pane');
+
+tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const targetTab = btn.getAttribute('data-tab');
+
+        // Hapus 'active' dari semua tombol dan panel
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabPanes.forEach(p => p.classList.remove('active'));
+
+        // Tambah 'active' ke tombol yang diklik dan panel yang sesuai
+        btn.classList.add('active');
+        document.getElementById(targetTab).classList.add('active');
+    });
+});</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Hubungan tombol dan panel menggunakan <strong>atribut data-tab</strong> sebagai key yang cocok dengan <strong>id panel</strong></li>
+                    <li>Pola "hapus semua, tambah ke yang aktif" adalah cara paling bersih untuk switching</li>
+                    <li>Tambahkan animasi <code>fadeIn</code> pada panel saat muncul agar transisi terasa halus</li>
+                    <li>Tabs cocok untuk: halaman profil, pengaturan, dashboard, detail produk dengan banyak seksi</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Slider -->
+        <section id="slider" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>🎚️ Slider Range</h1>
+                <p>Input berbentuk track geser untuk memilih nilai dalam rentang tertentu</p>
+            </div>
+
+            <h2>🎚️ Slider Range</h2>
+            <div class="slider-container">
+                <label>Volume: <span id="sliderValue">50</span>%</label>
+                <input type="range" class="slider" id="rangeSlider" min="0" max="100" value="50">
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Apa itu Slider Range?</h3>
+                <p>Slider Range adalah input HTML bertipe <code>range</code> yang memungkinkan user memilih nilai numerik dengan cara menggeser "thumb" (tombol bulat) di sepanjang track. Sangat intuitif untuk mengatur volume, brightness, harga, ukuran, dan sebagainya.</p>
+                <p>Di sini slider dikustomisasi penuh dengan CSS agar tampilannya sesuai tema — karena tampilan default browser sangat membosankan!</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>🏗️ HTML — Input Range Dasar</h4>
+                <p>Atribut <code>min</code>, <code>max</code>, dan <code>value</code> mendefinisikan rentang dan nilai awal. Label di atas slider menampilkan nilai saat ini secara real-time melalui JavaScript.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">HTML — Slider Range</span>
+                <code>&lt;div class="slider-container"&gt;
+    &lt;label&gt;Volume: &lt;span id="sliderValue"&gt;50&lt;/span&gt;%&lt;/label&gt;
+    &lt;input
+        type="range"
+        class="slider"
+        id="rangeSlider"
+        min="0"    &lt;!-- Nilai minimum --&gt;
+        max="100"  &lt;!-- Nilai maksimum --&gt;
+        value="50" &lt;!-- Nilai awal --&gt;
+    &gt;
+&lt;/div&gt;</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>🎨 Kustomisasi Tampilan Slider dengan CSS</h4>
+                <p>Browser memiliki tampilan slider default yang berbeda-beda. Untuk konsistensi dan estetika, kita override menggunakan pseudo-element <code>::-webkit-slider-thumb</code> dan <code>::-webkit-slider-runnable-track</code>.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Custom Slider Appearance</span>
+                <code>.slider {
+    -webkit-appearance: none; /* Hapus tampilan default */
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: linear-gradient(90deg, var(--color-2), var(--color-3));
+    outline: none;
+    cursor: pointer;
+}
+
+/* Tombol bulat (thumb) */
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    cursor: grab;
+    transition: transform 0.2s;
+}
+.slider::-webkit-slider-thumb:active {
+    cursor: grabbing;
+    transform: scale(1.2);
+}</code>
+            </div>
+
+            <div class="doc-code-block">
+                <span class="doc-code-label">JavaScript — Real-time Value Update</span>
+                <code>const rangeSlider = document.getElementById('rangeSlider');
+const sliderValue = document.getElementById('sliderValue');
+
+// Event 'input' terpanggil setiap kali nilai berubah (saat digeser)
+rangeSlider.addEventListener('input', () => {
+    sliderValue.textContent = rangeSlider.value;
+    // rangeSlider.value selalu berisi nilai terkini (0-100)
+});</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Gunakan <strong>event 'input'</strong> (bukan 'change') agar nilai update real-time saat digeser</li>
+                    <li>Hapus tampilan default dengan <code>-webkit-appearance: none</code> sebelum mengkustomisasi</li>
+                    <li>Slider cocok untuk: volume, brightness, filter harga, progress pembelajaran, rating</li>
+                    <li>Selalu tampilkan <strong>nilai numerik</strong> di samping slider agar user tahu posisi tepatnya</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Progress Bar -->
+        <section id="progress" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>📊 Progress Bar</h1>
+                <p>Visualisasi progres tugas atau loading yang bergerak secara dinamis</p>
+            </div>
+
+            <h2>📊 Progress Bar</h2>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <button class="btn btn-primary" id="startProgress">Start Progress</button>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Apa itu Progress Bar?</h3>
+                <p>Progress Bar adalah elemen visual yang menunjukkan seberapa jauh sebuah proses telah berjalan — upload file, loading halaman, penyelesaian kuis, atau langkah-langkah pendaftaran. Bar ini sangat penting untuk <strong>memberikan feedback</strong> kepada user bahwa sesuatu sedang berjalan.</p>
+                <p>Di sini, progress bar dianimasikan menggunakan <strong>setInterval JavaScript</strong> yang secara bertahap memperlebar elemen fill dari 0% hingga 100%.</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>🏗️ Struktur HTML: Dua Lapis</h4>
+                <p>Progress bar terdiri dari dua elemen bertumpuk: <code>.progress-bar</code> sebagai container (rel/latar), dan <code>.progress-fill</code> sebagai bar isian yang lebarnya diubah secara dinamis via JavaScript.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">HTML — Progress Bar Structure</span>
+                <code>&lt;div class="progress-bar"&gt;
+    &lt;!-- Fill: lebar diubah via JS, mulai dari 0% --&gt;
+    &lt;div class="progress-fill" id="progressFill" style="width: 0%"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;button id="startProgress"&gt;Start Progress&lt;/button&gt;</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>🎨 CSS: Container dan Fill</h4>
+                <p>Container memiliki <code>border-radius</code> dan background abu-abu. Fill memiliki gradient warna-warni dan <code>transition</code> agar perubahan lebarnya terasa smooth (bukan loncat).</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Progress Bar Styling</span>
+                <code>/* Container (latar abu-abu) */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: var(--bg-primary);
+    border-radius: 10px;
+    overflow: hidden; /* Penting agar fill tidak keluar */
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Fill (bar berwarna) */
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-2), var(--color-3), var(--color-5));
+    border-radius: 10px;
+    transition: width 0.05s linear; /* Animasi smooth tiap increment */
+}</code>
+            </div>
+
+            <div class="doc-code-block">
+                <span class="doc-code-label">JavaScript — Animated Progress dengan setInterval</span>
+                <code>const startProgressBtn = document.getElementById('startProgress');
+const progressFill = document.getElementById('progressFill');
+
+startProgressBtn.addEventListener('click', () => {
+    let progress = 0;
+    progressFill.style.width = '0%'; // Reset ke 0
+
+    // setInterval: jalankan fungsi setiap X milidetik
+    const interval = setInterval(() => {
+        progress += 1;
+        progressFill.style.width = progress + '%'; // Tambah 1% setiap 20ms
+
+        if (progress >= 100) {
+            clearInterval(interval); // Hentikan saat mencapai 100%
+        }
+    }, 20); // 20ms × 100 langkah = ~2 detik total
+});</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Struktur dua lapis (container + fill) adalah pola standar progress bar di CSS</li>
+                    <li><strong>overflow: hidden</strong> pada container wajib agar fill tidak meluber</li>
+                    <li>Gunakan <code>setInterval</code> + <code>clearInterval</code> untuk animasi berbasis waktu yang terkontrol</li>
+                    <li>Progress bar ideal untuk: upload/download, loading, onboarding steps, skill chart, kuis</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Cards -->
+        <section id="cards" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>🃏 Card Effects</h1>
+                <p>Tiga gaya kartu interaktif: hover lift, flip 3D, dan efek cahaya glow</p>
+            </div>
+
+            <h2>🃏 Card Effects</h2>
+            <div class="card-grid">
+                <div class="card card-hover">
+                    <div class="card-icon">🚀</div>
+                    <h3>Hover Me</h3>
+                    <p>Arahkan kursor untuk efek hover</p>
+                </div>
+                <div class="card card-flip">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-icon">🎨</div>
+                            <h3>Flip Card</h3>
+                            <p>Klik untuk flip</p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Balik!</h3>
+                            <p>Klik lagi untuk kembali</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-glow">
+                    <div class="card-icon">✨</div>
+                    <h3>Glow Effect</h3>
+                    <p>Card dengan efek cahaya</p>
+                </div>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Tiga Gaya Card Efek</h3>
+                <p>Card adalah unit konten yang paling sering digunakan di web modern — produk di e-commerce, artikel di blog, profil tim, dll. Di sini ada tiga variasi efek interaktif yang bisa membuat card terasa hidup: <strong>Hover Lift</strong>, <strong>Flip 3D</strong>, dan <strong>Glow Effect</strong>.</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>1️⃣ Hover Card — Lift & Shadow</h4>
+                <p>Card naik ke atas dan shadow-nya membesar saat di-hover, menciptakan ilusi card "terangkat" dari permukaan. Efek paling umum dan aman digunakan di hampir semua konteks.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Hover Lift Effect</span>
+                <code>.card-hover {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card-hover:hover {
+    transform: translateY(-8px); /* Naik 8px */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15); /* Shadow membesar */
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>2️⃣ Flip Card — CSS 3D Transform</h4>
+                <p>Card memiliki dua sisi (depan & belakang). Saat diklik, card berotasi 180° di sumbu Y menggunakan CSS 3D Transforms. Ini salah satu efek CSS paling dramatis yang selalu memukau!</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Flip Card 3D</span>
+                <code>/* Container: buat ruang 3D */
+.card-flip {
+    perspective: 1000px; /* Jarak pandang 3D */
+    cursor: pointer;
+}
+
+/* Inner yang berotasi */
+.card-inner {
+    position: relative;
+    transform-style: preserve-3d; /* Children jadi 3D */
+    transition: transform 0.6s;
+}
+
+/* Saat card.flipped ditambahkan */
+.card-flip.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Sisi depan dan belakang */
+.card-front, .card-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden; /* Sembunyikan sisi yang tidak dilihat */
+}
+.card-back {
+    transform: rotateY(180deg); /* Awalnya terbalik */
+}</code>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">JavaScript — Toggle Flip</span>
+                <code>const flipCards = document.querySelectorAll('.card-flip');
+
+flipCards.forEach(card => {
+    card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+        // Toggle: tambah 'flipped' jika belum ada, hapus jika sudah ada
+    });
+});</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>3️⃣ Glow Card — Animated Box Shadow</h4>
+                <p>Card memancarkan "cahaya" yang berdenyut menggunakan animasi <code>@keyframes</code> pada <code>box-shadow</code>. Efek ini sangat cocok untuk card fitur unggulan atau promo spesial.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Glow Effect Animation</span>
+                <code>.card-glow {
+    animation: cardGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes cardGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(162, 155, 254, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 35px rgba(162, 155, 254, 0.7),
+                    0 0 60px rgba(78, 205, 196, 0.3);
+    }
+}</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li><strong>Hover Lift</strong>: Efek universal, cocok untuk grid produk, artikel, atau profil</li>
+                    <li><strong>Flip 3D</strong>: Butuh <code>perspective</code> + <code>preserve-3d</code> + <code>backface-visibility: hidden</code> — ketiganya wajib ada!</li>
+                    <li><strong>Glow</strong>: Menarik perhatian, tapi jangan dipakai berlebihan agar tidak mengalihkan fokus</li>
+                    <li>Card yang baik selalu memiliki <strong>feedback visual saat interaksi</strong> (hover/klik)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Dropdown -->
+        <section id="dropdown" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>📥 Dropdown Menu</h1>
+                <p>Menu pilihan yang tersembunyi dan muncul saat diklik, dengan 4 style galeri berbeda</p>
+            </div>
+
+            <h2>📥 Dropdown Menu</h2>
+            <div class="dropdown">
+                <button class="btn btn-outline dropdown-toggle">
+                    Pilih Opsi ▼
+                </button>
+                <div class="dropdown-menu">
+                    <a href="#" class="dropdown-item" data-option="dashboard">🏠 Dashboard</a>
+                    <a href="#" class="dropdown-item" data-option="profile">👤 Profile</a>
+                    <a href="#" class="dropdown-item" data-option="settings">⚙️ Settings</a>
+                    <a href="#" class="dropdown-item" data-option="logout">🚪 Logout</a>
+                </div>
+            </div>
+            
+            <!-- Image Gallery Container -->
+            <div class="image-gallery" id="imageGallery">
+                <h3 id="galleryTitle">Pilih opsi untuk melihat galeri</h3>
+                <div class="gallery-grid" id="galleryGrid">
+                    <!-- Images will be inserted here dynamically -->
+                </div>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Dropdown + 4 Style Galeri</h3>
+                <p>Dropdown adalah menu pilihan yang tersembunyi dan hanya muncul saat tombol diklik. Yang membuat bagian ini istimewa: setiap pilihan menampilkan galeri gambar dengan <strong>gaya interaksi yang berbeda-beda</strong> — total 4 teknik UI sekaligus dalam satu komponen!</p>
+                <p>Ini adalah cara terbaik untuk belajar berbagai teknik CSS dan JavaScript secara kontekstual.</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>🔽 Cara Kerja Dropdown</h4>
+                <p>Tombol toggle memunculkan/menyembunyikan <code>.dropdown-menu</code> dengan class <code>active</code>. Klik di luar area dropdown (event di <code>document</code>) menutupnya kembali secara otomatis.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">JavaScript — Dropdown Toggle Logic</span>
+                <code>const dropdownToggle = document.querySelector('.dropdown-toggle');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+
+// Buka/tutup saat tombol diklik
+dropdownToggle.addEventListener('click', (e) => {
+    e.stopPropagation(); // Cegah event bubble ke document
+    dropdownMenu.classList.toggle('active');
+});
+
+// Tutup saat klik di mana saja di luar dropdown
+document.addEventListener('click', () => {
+    dropdownMenu.classList.remove('active');
+});</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>1️⃣ Dashboard Style — Hover Overlay</h4>
+                <p>Gambar ditampilkan dalam grid. Saat di-hover, overlay gelap muncul dari bawah menggunakan <code>transform: translateY()</code>. Teknik ini sering dipakai di Instagram dan Pinterest.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Hover Overlay</span>
+                <code>.gallery-overlay {
+    transform: translateY(100%); /* Sembunyi di bawah */
+    transition: transform 0.3s;
+}
+.gallery-item:hover .gallery-overlay {
+    transform: translateY(0); /* Muncul ke atas saat hover */
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>2️⃣ Profile Style — Card dengan Tombol</h4>
+                <p>Gambar ditampilkan layaknya card profil dengan nama dan tombol "View Details". Pola ini umum di halaman team/staff dan listing produk.</p>
+            </div>
+            <div class="doc-step">
+                <h4>3️⃣ Settings Style — Flip Card 3D</h4>
+                <p>Setiap gambar bisa di-flip seperti flashcard menggunakan CSS 3D Transforms (konsep yang sama dengan Card Effects di atas).</p>
+            </div>
+            <div class="doc-step">
+                <h4>4️⃣ Logout Style — Lightbox / Zoom Modal</h4>
+                <p>Klik gambar → gambar tampil fullscreen di modal gelap. Ini disebut <strong>lightbox</strong>, pola yang sangat umum di galeri foto, portofolio, dan e-commerce.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Zoom Modal (Lightbox)</span>
+                <code>.zoom-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.95); /* Backdrop hampir hitam */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.zoom-content {
+    max-width: 90%; max-height: 90%;
+    animation: zoomIn 0.3s ease;
+}
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Dropdown memanfaatkan pola toggle class <code>active</code> + event <code>stopPropagation</code> agar tidak langsung tertutup saat dibuka</li>
+                    <li>Keempat style galeri menunjukkan bahwa <strong>data yang sama bisa dipresentasikan dengan cara yang sangat berbeda</strong></li>
+                    <li>Pilih style galeri sesuai konteks: overlay → media sosial, card → profil, flip → edukasi, lightbox → portofolio</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Toast -->
+        <section id="toast" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>🍞 Toast Notification</h1>
+                <p>Pesan notifikasi singkat yang muncul sebentar lalu menghilang otomatis</p>
+            </div>
+
+            <h2>🍞 Toast Notification</h2>
+            <div class="toast-buttons">
+                <button class="btn btn-primary" onclick="showToast('success')">Success Toast</button>
+                <button class="btn btn-gradient" onclick="showToast('info')">Info Toast</button>
+                <button class="btn btn-outline" onclick="showToast('warning')">Warning Toast</button>
+                <button class="btn btn-3d" onclick="showToast('error')">Error Toast</button>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Apa itu Toast Notification?</h3>
+                <p>Toast adalah notifikasi kecil yang muncul sebentar (biasanya 3 detik) di pojok layar, lalu menghilang sendiri tanpa perlu interaksi dari user. Namanya dari roti yang "pop up" dari toaster!</p>
+                <p>Toast ideal untuk memberi feedback singkat: "berhasil disimpan", "koneksi terputus", "pesan terkirim", dll — tanpa mengganggu alur kerja user seperti modal.</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>🎞️ Teknik Animasi: Slide In dari Kanan</h4>
+                <p>Toast awalnya di luar layar (<code>translateX(400px)</code>) dan transparan. Saat class <code>show</code> ditambahkan, toast bergerak masuk ke posisi normal. Setelah 3 detik, class <code>show</code> dihapus dan toast kembali ke posisi awal (slide out).</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Toast Slide In/Out Animation</span>
+                <code>/* Container di pojok kanan atas */
+#toastContainer {
+    position: fixed;
+    top: 20px; right: 20px;
+    z-index: 2000;
+}
+
+/* State awal: tersembunyi di kanan */
+.toast {
+    opacity: 0;
+    transform: translateX(400px);
+    transition: all 0.3s ease;
+    padding: 15px 20px;
+    border-radius: 10px;
+    color: white;
+    min-width: 300px;
+    margin-bottom: 10px;
+}
+
+/* State aktif: muncul */
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Tipe-tipe toast */
+.toast-success { background: linear-gradient(135deg, #00b894, #4ecdc4); }
+.toast-info    { background: linear-gradient(135deg, #45b7d1, #a29bfe); }
+.toast-warning { background: linear-gradient(135deg, #f9ca24, #ff7675); }
+.toast-error   { background: linear-gradient(135deg, #ff6b6b, #fd79a8); }</code>
+            </div>
+
+            <div class="doc-code-block">
+                <span class="doc-code-label">JavaScript — showToast() Function</span>
+                <code>function showToast(type) {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`; // Tentukan warna berdasarkan tipe
+
+    const messages = {
+        success: '✅ Berhasil! Operasi selesai.',
+        info:    'ℹ️ Info: Ada informasi untuk Anda.',
+        warning: '⚠️ Peringatan: Perhatikan ini.',
+        error:   '❌ Error: Terjadi kesalahan.'
+    };
+    toast.textContent = messages[type];
+    container.appendChild(toast);
+
+    // Tunggu 10ms lalu tambahkan class 'show' (agar transisi berjalan)
+    setTimeout(() => toast.classList.add('show'), 10);
+
+    // Setelah 3 detik, mulai animasi keluar
+    setTimeout(() => {
+        toast.classList.remove('show');
+        // Hapus dari DOM setelah animasi selesai (300ms)
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Toast dibuat secara <strong>dinamis</strong> dengan <code>createElement</code> agar bisa muncul banyak sekaligus</li>
+                    <li>Delay 10ms antara <code>appendChild</code> dan <code>classList.add('show')</code> diperlukan agar CSS transition terpicu</li>
+                    <li>Selalu hapus elemen toast dari DOM setelah animasi keluar selesai agar tidak menumpuk</li>
+                    <li>Gunakan 4 warna berbeda (success/info/warning/error) agar user langsung paham jenis notifikasinya</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Spinners -->
+        <section id="spinner" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>⏳ Loading Spinners</h1>
+                <p>Empat jenis animasi loading yang dibuat sepenuhnya dengan CSS</p>
+            </div>
+
+            <h2>⏳ Loading Spinners</h2>
+            <div class="spinner-showcase">
+                <div class="spinner spinner-1"></div>
+                <div class="spinner spinner-2"></div>
+                <div class="spinner spinner-3"></div>
+                <div class="spinner spinner-4"></div>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Apa itu Loading Spinner?</h3>
+                <p>Loading spinner adalah animasi visual yang memberi tahu user bahwa sesuatu sedang diproses — konten sedang dimuat, data sedang dikirim, dll. Tanpa spinner, user tidak tahu apakah website-nya hang atau masih bekerja.</p>
+                <p>Keempat spinner di sini dibuat <strong>100% murni CSS</strong> menggunakan kombinasi <code>border</code>, <code>border-radius</code>, dan animasi <code>@keyframes</code> — tidak ada gambar GIF sama sekali!</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>1️⃣ Spinner Klasik — Border Rotate</h4>
+                <p>Teknik paling populer: lingkaran penuh dengan satu bagian border berwarna. Keseluruhan elemen diputar dengan <code>animation: spin</code>. Border yang "hilang" memberi ilusi yang berputar.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Classic Spinner</span>
+                <code>.spinner-1 {
+    width: 60px; height: 60px;
+    border: 6px solid var(--bg-primary);    /* Border abu-abu */
+    border-top: 6px solid var(--color-1);   /* Hanya atas yang berwarna */
+    border-radius: 50%;                      /* Bentuk lingkaran */
+    animation: spin 1s linear infinite;     /* Putar terus */
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>2️⃣ Dual Color Spinner — Multi-border</h4>
+                <p>Dua warna sekaligus! Border transparan di sisi kiri-bawah, berwarna di kanan-atas. Menggunakan dua properti border berbeda agar efeknya terlihat dinamis dan modern.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Dual Color Spinner</span>
+                <code>.spinner-2 {
+    border: 6px solid transparent;            /* Semua transparan */
+    border-top: 6px solid var(--color-2);    /* Atas: teal */
+    border-right: 6px solid var(--color-3);  /* Kanan: biru */
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;    /* Lebih cepat */
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>3️⃣ Pulse Spinner — Scale Animation</h4>
+                <p>Berbentuk kotak yang berdenyut membesar-mengecil. Menggunakan <code>transform: scale()</code> yang beranimasi bolak-balik. Berbeda dari spinner putar — ini lebih cocok untuk state "menunggu" yang santai.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Pulse Spinner</span>
+                <code>.spinner-3 {
+    background: linear-gradient(135deg, var(--color-5), var(--color-3));
+    border-radius: 10px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1);   opacity: 1;   }
+    50%       { transform: scale(1.2); opacity: 0.7; }
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>4️⃣ Dotted Spinner — Dashed Border</h4>
+                <p>Memanfaatkan <code>border-style: dotted</code> yang jarang diketahui. Ketika border dotted pada lingkaran diputar, titik-titik bergerak mengikuti kurva lingkaran — efek yang unik dan berbeda!</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Dotted Spinner</span>
+                <code>.spinner-4 {
+    border: 6px dotted var(--color-4); /* Border titik-titik */
+    border-radius: 50%;
+    animation: spin 2s linear infinite; /* Lebih lambat = efek lebih jelas */
+}</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Semua spinner menggunakan <code>border-radius: 50%</code> + <code>@keyframes spin</code> sebagai fondasi</li>
+                    <li>Variasi dicapai dari jenis border (<code>solid</code>, <code>dotted</code>), warna border, dan jenis animasi (<code>rotate</code> vs <code>scale</code>)</li>
+                    <li>CSS spinner lebih ringan dari GIF dan bisa disesuaikan ukuran/warnanya dengan mudah</li>
+                    <li>Selalu tampilkan spinner saat proses async (fetch data, upload) agar user tahu sistem masih berjalan</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Custom Inputs -->
+        <section id="inputs" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>✅ Custom Inputs</h1>
+                <p>Checkbox dan Radio Button yang dikustomisasi penuh — tampilan modern, tetap fungsional</p>
+            </div>
+
+            <h2>✅ Custom Inputs</h2>
+            <div class="input-showcase">
+                <div class="input-group">
+                    <h3>Checkboxes</h3>
+                    <label class="custom-checkbox">Option 1
+                        <input type="checkbox" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="custom-checkbox">Option 2
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="custom-checkbox">Option 3
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="input-group">
+                    <h3>Radio Buttons</h3>
+                    <label class="custom-radio">Choice A
+                        <input type="radio" name="radio" checked>
+                        <span class="radiomark"></span>
+                    </label>
+                    <label class="custom-radio">Choice B
+                        <input type="radio" name="radio">
+                        <span class="radiomark"></span>
+                    </label>
+                    <label class="custom-radio">Choice C
+                        <input type="radio" name="radio">
+                        <span class="radiomark"></span>
+                    </label>
+                </div>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Mengapa Perlu Custom Inputs?</h3>
+                <p>Tampilan default <code>&lt;input type="checkbox"&gt;</code> dan <code>&lt;input type="radio"&gt;</code> berbeda di setiap browser dan terlihat kuno. Dengan teknik CSS custom inputs, kita <strong>menyembunyikan input asli</strong> dan menggantinya dengan elemen visual yang sepenuhnya kita kontrol — namun tetap fungsional dan aksesibel.</p>
+                <p>Perbedaan utama keduanya: <strong>Checkbox</strong> memungkinkan pilihan lebih dari satu (multi-select), sedangkan <strong>Radio Button</strong> hanya boleh satu pilihan aktif dalam satu grup (single-select).</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>🏗️ Struktur HTML: Label Membungkus Input</h4>
+                <p>Kuncinya adalah membungkus <code>&lt;input&gt;</code> asli di dalam <code>&lt;label&gt;</code>. Ini membuat seluruh area label bisa diklik dan otomatis memengaruhi checkbox/radio di dalamnya — tanpa JavaScript sama sekali. Elemen <code>&lt;span class="checkmark"&gt;</code> adalah pengganti visual kita.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">HTML — Custom Checkbox & Radio Structure</span>
+                <code>&lt;!-- Custom Checkbox --&gt;
+&lt;label class="custom-checkbox"&gt;
+    Teks pilihan
+    &lt;input type="checkbox"&gt;  &lt;!-- Input asli (akan disembunyikan) --&gt;
+    &lt;span class="checkmark"&gt;&lt;/span&gt;  &lt;!-- Pengganti visual kita --&gt;
+&lt;/label&gt;
+
+&lt;!-- Custom Radio (gunakan name yang sama di satu grup) --&gt;
+&lt;label class="custom-radio"&gt;
+    Pilihan A
+    &lt;input type="radio" name="radio"&gt;
+    &lt;span class="radiomark"&gt;&lt;/span&gt;
+&lt;/label&gt;</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>🎨 CSS: Sembunyikan Input Asli, Bangun Ulang Tampilannya</h4>
+                <p>Input asli disembunyikan dengan <code>opacity: 0</code> (bukan <code>display: none</code> agar tetap bisa diklik dan aksesibel). Lalu <code>.checkmark</code> diposisikan secara absolut di tempat yang sama. Selector <code>input:checked ~ .checkmark</code> mengubah tampilan saat input diceklis.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Custom Checkbox (Teknik Utama)</span>
+                <code>/* Container label */
+.custom-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px; /* Beri ruang untuk checkmark */
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Sembunyikan input asli — tapi JANGAN display:none agar aksesibel */
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Kotak pengganti (unchecked) */
+.checkmark {
+    position: absolute;
+    top: 0; left: 0;
+    height: 25px; width: 25px;
+    background: var(--bg-primary);
+    border: 2px solid var(--color-2);
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+/* Saat diceklis: background berubah gradient */
+.custom-checkbox input:checked ~ .checkmark {
+    background: linear-gradient(135deg, var(--color-2), var(--color-3));
+    border-color: var(--color-2);
+}
+
+/* Tanda centang (✓) dibuat dari border CSS! */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none; /* Tersembunyi saat unchecked */
+    left: 7px; top: 3px;
+    width: 6px; height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg); /* Membentuk tanda ✓ */
+}
+
+/* Tampilkan tanda centang saat checked */
+.custom-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>⭕ CSS: Radio Button — Perbedaan dengan Checkbox</h4>
+                <p>Radio button hampir sama strukturnya, hanya berbeda di bentuk (bulat: <code>border-radius: 50%</code>) dan tanda aktifnya berupa lingkaran kecil putih di tengah, bukan tanda centang.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Custom Radio Button (Perbedaan Kunci)</span>
+                <code>/* Bentuk bulat — ini satu-satunya perbedaan dari checkmark */
+.radiomark {
+    border-radius: 50%; /* Lingkaran penuh */
+}
+
+/* Titik putih di tengah (bukan tanda centang) */
+.custom-radio .radiomark:after {
+    top: 6px; left: 6px;
+    width: 9px; height: 9px;
+    border-radius: 50%; /* Titik juga bulat */
+    background: white;
+    /* Tidak perlu transform: rotate() seperti checkbox */
+}</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Gunakan <strong>opacity: 0</strong> bukan <code>display: none</code> agar input tetap bisa difokus keyboard (aksesibilitas)</li>
+                    <li>Selector <code>input:checked ~ .checkmark</code> adalah inti dari teknik ini — tidak butuh JavaScript sama sekali!</li>
+                    <li>Tanda centang (✓) dibuat dari <strong>dua sisi border yang dirotasi</strong> — tidak menggunakan gambar atau karakter Unicode</li>
+                    <li><strong>Checkbox</strong> = multi pilihan | <strong>Radio</strong> = satu pilihan saja (pastikan semua opsi dalam satu grup punya <code>name</code> yang sama)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Tooltips -->
+        <section id="tooltip" class="section">
+            <!-- Judul Tengah -->
+            <div class="section-title-banner">
+                <h1>💬 Tooltips</h1>
+                <p>Teks penjelasan kecil yang muncul saat kursor diarahkan ke elemen — murni CSS!</p>
+            </div>
+
+            <h2>💬 Tooltips</h2>
+            <div class="tooltip-showcase">
+                <button class="btn btn-primary tooltip-trigger" data-tooltip="Ini adalah tooltip!">Hover Me</button>
+                <button class="btn btn-gradient tooltip-trigger" data-tooltip="Tooltip dengan info">Info Tooltip</button>
+                <button class="btn btn-outline tooltip-trigger" data-tooltip="Tooltip membantu user">Help Tooltip</button>
+            </div>
+
+            <hr class="doc-separator">
+
+            <div class="doc-intro">
+                <h3>📖 Apa itu Tooltip?</h3>
+                <p>Tooltip adalah teks keterangan kecil yang muncul saat user mengarahkan kursor ke suatu elemen. Fungsinya memberi konteks tambahan tanpa memenuhi layar — sangat berguna untuk ikon, tombol tanpa teks, atau field formulir yang butuh penjelasan.</p>
+                <p>Yang luar biasa: tooltip di sini dibuat <strong>100% murni CSS</strong> menggunakan pseudo-element <code>::before</code> dan <code>::after</code>, tanpa satu baris JavaScript pun!</p>
+            </div>
+
+            <div class="doc-step">
+                <h4>🏗️ HTML: Satu Atribut, Segalanya</h4>
+                <p>Teks tooltip disimpan langsung di atribut HTML <code>data-tooltip</code>. CSS kemudian mengambilnya menggunakan fungsi <code>attr()</code>. Ini sangat efisien karena tidak perlu membuat elemen tooltip terpisah untuk setiap tombol.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">HTML — Tooltip dengan data-attribute</span>
+                <code>&lt;button
+    class="tooltip-trigger"
+    data-tooltip="Teks tooltip kamu di sini"
+&gt;
+    Hover saya!
+&lt;/button&gt;
+
+&lt;!-- Setiap elemen bisa punya tooltip berbeda,
+     cukup ubah nilai data-tooltip-nya --&gt;
+&lt;button data-tooltip="Simpan dokumen"&gt;💾&lt;/button&gt;
+&lt;button data-tooltip="Hapus item"&gt;🗑️&lt;/button&gt;</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>🎨 CSS: Pseudo-element ::before dan ::after</h4>
+                <p>Setiap elemen HTML memiliki dua "slot" konten tersembunyi: <code>::before</code> dan <code>::after</code>. Di sini <code>::before</code> digunakan untuk kotak tooltip, dan <code>::after</code> untuk segitiga kecil (ekor) di bawahnya. Keduanya awalnya <code>opacity: 0</code> dan muncul saat <code>:hover</code>.</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Tooltip Murni dengan Pseudo-element</span>
+                <code>.tooltip-trigger {
+    position: relative; /* Jadikan referensi posisi untuk tooltip */
+}
+
+/* ── KOTAK TOOLTIP ── */
+.tooltip-trigger::before {
+    content: attr(data-tooltip); /* Ambil teks dari atribut HTML! */
+    position: absolute;
+    bottom: 120%;           /* Posisi di atas tombol */
+    left: 50%;
+    transform: translateX(-50%); /* Tengahkan secara horizontal */
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    white-space: nowrap;    /* Teks tidak wrap */
+    /* State awal: tersembunyi */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+    pointer-events: none;   /* Tooltip tidak menghalangi klik */
+}
+
+/* ── SEGITIGA EKOR ── */
+.tooltip-trigger::after {
+    content: "";
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Trik border untuk membuat segitiga CSS */
+    border: 6px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+/* ── TAMPILKAN SAAT HOVER ── */
+.tooltip-trigger:hover::before,
+.tooltip-trigger:hover::after {
+    opacity: 1;
+    visibility: visible;
+}</code>
+            </div>
+
+            <div class="doc-step">
+                <h4>🔺 Trik Segitiga CSS</h4>
+                <p>Segitiga di CSS dibuat dari border yang runtuh. Saat sebuah elemen berukuran <code>0×0</code> dengan border tebal, setiap sudut border membentuk segitiga. Dengan membuat 3 sisi <code>transparent</code> dan satu sisi berwarna, kita mendapat segitiga tunggal!</p>
+            </div>
+            <div class="doc-code-block">
+                <span class="doc-code-label">CSS — Cara Kerja Segitiga dari Border</span>
+                <code>/* Elemen 0×0 dengan border tebal di semua sisi */
+.segitiga {
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;  /* Semua sisi transparan */
+    border-top-color: black;         /* Hanya atas yang hitam */
+    /* Hasilnya: ▼ segitiga menghadap bawah */
+}
+
+/* Untuk tooltip di atas tombol → kita butuh ▼ (ekor menuju tombol) */
+/* Maka gunakan border-TOP yang berwarna */</code>
+            </div>
+
+            <div class="doc-conclusion">
+                <h3>✅ Kesimpulan</h3>
+                <ul>
+                    <li>Simpan teks tooltip di <code>data-tooltip</code> lalu ambil di CSS dengan <code>content: attr(data-tooltip)</code> — tidak perlu JavaScript!</li>
+                    <li><code>::before</code> untuk kotak tooltip, <code>::after</code> untuk segitiga ekornya — keduanya pseudo-element yang powerful</li>
+                    <li>Tambahkan <code>pointer-events: none</code> pada tooltip agar tidak menghalangi klik user</li>
+                    <li>Gunakan tooltip untuk: ikon tanpa label, tombol dengan fungsi tidak jelas, field formulir yang butuh panduan singkat</li>
+                    <li><strong>Jangan</strong> sembunyikan informasi penting di tooltip saja — tooltip tidak muncul di layar sentuh (mobile)!</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Container -->
+    <div id="toastContainer"></div>
+
+    <!-- Zoom Modal for Logout Gallery -->
+    <div class="zoom-modal" id="zoomModal">
+        <span class="zoom-close">&times;</span>
+        <img class="zoom-content" id="zoomImage">
+        <div class="zoom-caption" id="zoomCaption"></div>
+    </div>
+
+    <script>
+        // Hamburger & Sidebar Toggle
+        const hamburger = document.getElementById('hamburgerBtn');
+        const sidebar = document.getElementById('sidebar');
+
+        hamburger.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+                sidebar.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+
+        // Section Navigation
+        const menuLinks = document.querySelectorAll('.menu-list a');
+        const sections = document.querySelectorAll('.section');
+
+        menuLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetSection = link.getAttribute('data-section');
+                
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                document.getElementById(targetSection).classList.add('active');
+                
+                // Close sidebar on mobile
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-theme');
+        });
+
+        // Accordion
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                document.querySelectorAll('.accordion-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Modal
+        const modal = document.getElementById('modal');
+        const openModalBtn = document.getElementById('openModal');
+        const closeModal = document.querySelector('.modal-close');
+
+        openModalBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Tabs
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+                
+                tabButtons.forEach(b => b.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+                
+                btn.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Slider
+        const rangeSlider = document.getElementById('rangeSlider');
+        const sliderValue = document.getElementById('sliderValue');
+
+        rangeSlider.addEventListener('input', () => {
+            sliderValue.textContent = rangeSlider.value;
+        });
+
+        // Progress Bar
+        const startProgressBtn = document.getElementById('startProgress');
+        const progressFill = document.getElementById('progressFill');
+
+        startProgressBtn.addEventListener('click', () => {
+            let progress = 0;
+            progressFill.style.width = '0%';
+            
+            const interval = setInterval(() => {
+                progress += 1;
+                progressFill.style.width = progress + '%';
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                }
+            }, 20);
+        });
+
+        // Card Flip
+        const flipCards = document.querySelectorAll('.card-flip');
+        flipCards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+
+        // ========== DROPDOWN WITH 4 DIFFERENT STYLES ========== //
+        const dropdownToggle = document.querySelector('.dropdown-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+        const imageGallery = document.getElementById('imageGallery');
+        const galleryGrid = document.getElementById('galleryGrid');
+        const galleryTitle = document.getElementById('galleryTitle');
+
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            dropdownMenu.classList.remove('active');
+        });
+
+        // Handle dropdown item click with DIFFERENT STYLES for each option
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const option = item.getAttribute('data-option');
+                const optionText = item.textContent.trim();
+                
+                // Update title
+                galleryTitle.textContent = `Galeri ${optionText}`;
+                
+                // Clear existing images
+                galleryGrid.innerHTML = '';
+                
+                const imageUrl = 'https://files.catbox.moe/i6m07z.png';
+                
+                // STYLE 1: Dashboard - Hover Overlay (default style)
+                if (option === 'dashboard') {
+                    galleryGrid.className = 'gallery-grid style-dashboard';
+                    for (let i = 1; i <= 4; i++) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'gallery-item';
+                        imgContainer.innerHTML = `
+                            <img src="${imageUrl}" alt="${optionText} ${i}">
+                            <div class="gallery-overlay">
+                                <span class="gallery-label">${optionText} #${i}</span>
+                            </div>
+                        `;
+                        galleryGrid.appendChild(imgContainer);
+                    }
+                }
+                
+                // STYLE 2: Profile - Button View Details
+                else if (option === 'profile') {
+                    galleryGrid.className = 'gallery-grid style-profile';
+                    for (let i = 1; i <= 4; i++) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'gallery-item-profile';
+                        imgContainer.innerHTML = `
+                            <img src="${imageUrl}" alt="${optionText} ${i}">
+                            <div class="profile-info">
+                                <h4>${optionText} #${i}</h4>
+                                <button class="btn-view-details" onclick="alert('Detail ${optionText} #${i}')">
+                                    View Details →
+                                </button>
+                            </div>
+                        `;
+                        galleryGrid.appendChild(imgContainer);
+                    }
+                }
+                
+                // STYLE 3: Settings - Flip Card
+                else if (option === 'settings') {
+                    galleryGrid.className = 'gallery-grid style-settings';
+                    for (let i = 1; i <= 4; i++) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'gallery-item-flip';
+                        imgContainer.innerHTML = `
+                            <div class="flip-inner">
+                                <div class="flip-front">
+                                    <img src="${imageUrl}" alt="${optionText} ${i}">
+                                </div>
+                                <div class="flip-back">
+                                    <h3>⚙️</h3>
+                                    <p>${optionText} #${i}</p>
+                                    <p>Klik untuk kembali</p>
+                                </div>
+                            </div>
+                        `;
+                        
+                        // Add click event for flip
+                        imgContainer.addEventListener('click', () => {
+                            imgContainer.classList.toggle('flipped');
+                        });
+                        
+                        galleryGrid.appendChild(imgContainer);
+                    }
+                }
+                
+                // STYLE 4: Logout - Zoom Modal
+                else if (option === 'logout') {
+                    galleryGrid.className = 'gallery-grid style-logout';
+                    for (let i = 1; i <= 4; i++) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.className = 'gallery-item-zoom';
+                        imgContainer.innerHTML = `
+                            <img src="${imageUrl}" alt="${optionText} ${i}" class="zoom-trigger">
+                            <div class="zoom-icon">🔍</div>
+                            <div class="zoom-label">${optionText} #${i}</div>
+                        `;
+                        
+                        // Add zoom modal functionality
+                        const img = imgContainer.querySelector('img');
+                        img.addEventListener('click', () => {
+                            openZoomModal(imageUrl, `${optionText} #${i}`);
+                        });
+                        
+                        galleryGrid.appendChild(imgContainer);
+                    }
+                }
+                
+                // Show gallery with animation
+                imageGallery.classList.add('active');
+                
+                // Close dropdown
+                dropdownMenu.classList.remove('active');
+            });
+        });
+
+        // Zoom Modal Functions (for Logout style)
+        const zoomModal = document.getElementById('zoomModal');
+        const zoomImage = document.getElementById('zoomImage');
+        const zoomCaption = document.getElementById('zoomCaption');
+        const zoomClose = document.querySelector('.zoom-close');
+
+        function openZoomModal(imgSrc, caption) {
+            zoomModal.style.display = 'flex';
+            zoomImage.src = imgSrc;
+            zoomCaption.textContent = caption;
+            setTimeout(() => {
+                zoomModal.classList.add('active');
+            }, 10);
+        }
+
+        zoomClose.addEventListener('click', () => {
+            zoomModal.classList.remove('active');
+            setTimeout(() => {
+                zoomModal.style.display = 'none';
+            }, 300);
+        });
+
+        zoomModal.addEventListener('click', (e) => {
+            if (e.target === zoomModal) {
+                zoomModal.classList.remove('active');
+                setTimeout(() => {
+                    zoomModal.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        // Toast Notification
+        function showToast(type) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            
+            const messages = {
+                success: '✅ Berhasil! Operasi selesai.',
+                info: 'ℹ️ Info: Ada informasi untuk Anda.',
+                warning: '⚠️ Peringatan: Perhatikan ini.',
+                error: '❌ Error: Terjadi kesalahan.'
+            };
+            
+            toast.textContent = messages[type];
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
